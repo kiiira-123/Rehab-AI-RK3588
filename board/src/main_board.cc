@@ -46,7 +46,7 @@
 #define MODEL_BUF_WIDTH  640
 #define MODEL_BUF_HEIGHT 480
 #define MODEL_FMT       RK_FORMAT_RGB_888      // model buffer: 24bpp
-#define DISP_FMT        RK_FORMAT_XRGB_8888     // display buffer: 32bpp (XR24)
+#define DISP_FMT        RK_FORMAT_BGRX_8888     // display buffer: 32bpp (matches DRM XR24 BGRX)
 #define MODEL_PATH      "./model/yolov8s-pose.rknn"
 
 /* =========================================================================
