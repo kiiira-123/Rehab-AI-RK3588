@@ -12,7 +12,7 @@ CXXFLAGS := -std=c++17 -O3 -DNDEBUG -Wall $(INCLUDES)
 CFLAGS   := -std=c11   -O3 -DNDEBUG -Wall $(INCLUDES)
 LDFLAGS  := -lrknnrt -lrga -ldrm -lpthread -lstdc++ -lm
 
-CXX_SRCS := src/main_board.cc src/postprocess.cc src/yolov8-pose.cc src/ui.cpp
+CXX_SRCS := src/main_board.cc src/postprocess.cc src/yolov8-pose.cc src/ui.cc
 C_SRCS   := src/image_utils.c src/file_utils.c
 OBJS     := $(CXX_SRCS:.cc=.o) $(C_SRCS:.c=.o)
 TARGET   := rehab_app
@@ -25,6 +25,9 @@ $(TARGET): $(OBJS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cc
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o: %.c
